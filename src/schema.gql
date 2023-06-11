@@ -2,9 +2,26 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Paciente {
+  id: Int!
+  nombre: String!
+  direccion: String
+}
+
 type Query {
   holaMundo: String!
 
   """Genera un numero aleatorio con el argumento hasta, por defecto 10"""
   numeroAleatorio(hasta: Int): Int!
+  pacientes: [Paciente!]!
+  paciente(pacienteID: Int!): Paciente!
+}
+
+type Mutation {
+  creaPaciente(createPacienteInput: CreatePacienteInput!): Paciente!
+}
+
+input CreatePacienteInput {
+  nombre: String!
+  direccion: String
 }
