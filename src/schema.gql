@@ -2,10 +2,20 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Medico {
+  """ID"""
+  id: Int!
+  nombre: String!
+  centro: String
+  pacientes: [Paciente!]
+}
+
 type Paciente {
   id: Int!
   nombre: String!
   direccion: String
+  medicoId: Float!
+  medico: Medico!
 }
 
 type Query {
@@ -15,13 +25,22 @@ type Query {
   numeroAleatorio(hasta: Int): Int!
   pacientes: [Paciente!]!
   paciente(pacienteID: Int!): Paciente!
+  medicos: [Medico!]!
+  medico(id: Int!): Medico!
 }
 
 type Mutation {
   creaPaciente(createPacienteInput: CreatePacienteInput!): Paciente!
+  createMedico(createMedicoInput: CreateMedicoInput!): Medico!
 }
 
 input CreatePacienteInput {
   nombre: String!
   direccion: String
+  medicoId: Float!
+}
+
+input CreateMedicoInput {
+  nombre: String!
+  centro: String!
 }

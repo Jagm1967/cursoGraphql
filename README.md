@@ -12,3 +12,6 @@ nest g s  pacientes //generar servicio
 npm i @nestjs/typeorm typeorm sqlite3 //typeorm y sqlite
 
 (dto) data transfer object
+
+nest g resource medicos
+

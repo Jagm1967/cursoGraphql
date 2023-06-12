@@ -3,12 +3,14 @@ import { Repository } from 'typeorm';
 import { Paciente } from './entities/paciente.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreatePacienteInput } from './dto/create-paciente.input';
+import { MedicosService } from 'src/medicos/medicos.service';
 
 @Injectable()
 export class PacientesService {
   constructor(
     @InjectRepository(Paciente)
     private pacientesRepository: Repository<Paciente>,
+    private medicosService: MedicosService,
   ) {}
 
   create(createPacienteInput: CreatePacienteInput) {
@@ -22,5 +24,9 @@ export class PacientesService {
 
   findAll() {
     return this.pacientesRepository.find();
+  }
+
+  getMedico(medicoId: number) {
+    return this.medicosService.findOne(medicoId);
   }
 }

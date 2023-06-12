@@ -7,4 +7,7 @@ export class CreatePacienteInput {
 
   @Field({ nullable: true })
   direccion?: string;
+
+  @Field()
+  medicoId: number;
 }

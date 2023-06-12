@@ -1,5 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Medico } from 'src/medicos/entities/medico.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -15,4 +16,12 @@ export class Paciente {
   @Column({ nullable: true })
   @Field({ nullable: true })
   direccion?: string;
+
+  @Column()
+  @Field()
+  medicoId: number;
+
+  @ManyToOne(() => Medico, (medico) => medico.pacientes)
+  @Field(() => Medico)
+  medico: Medico;
 }
