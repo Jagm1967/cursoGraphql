@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Paciente } from 'src/pacientes/entities/paciente.entity';
 import { Repository } from 'typeorm';
 import { Medico } from './entities/medico.entity';
+import { FindMedicoQuery } from './dto/find-medico.query';
 
 @Injectable()
 export class MedicosService {
@@ -19,8 +20,8 @@ export class MedicosService {
     return this.medicoRepository.save(newMedico);
   }
 
-  findAll() {
-    return this.medicoRepository.find();
+  findAll(findMedicoQuery:FindMedicoQuery={}) {
+    return this.medicoRepository.find({where:findMedicoQuery});
   }
 
   findOne(id: number) {

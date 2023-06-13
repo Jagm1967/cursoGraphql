@@ -25,8 +25,13 @@ type Query {
   numeroAleatorio(hasta: Int): Int!
   pacientes: [Paciente!]!
   paciente(pacienteID: Int!): Paciente!
-  medicos: [Medico!]!
+  medicos(findMedico: FindMedicoQuery): [Medico!]!
   medico(id: Int!): Medico!
+}
+
+input FindMedicoQuery {
+  nombre: String
+  centro: String
 }
 
 type Mutation {

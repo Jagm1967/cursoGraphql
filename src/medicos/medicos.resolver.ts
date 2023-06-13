@@ -12,6 +12,7 @@ import { Medico } from './entities/medico.entity';
 import { CreateMedicoInput } from './dto/create-medico.input';
 import { UpdateMedicoInput } from './dto/update-medico.input';
 import { Paciente } from 'src/pacientes/entities/paciente.entity';
+import { FindMedicoQuery } from './dto/find-medico.query';
 
 @Resolver(() => Medico)
 export class MedicosResolver {
@@ -25,8 +26,8 @@ export class MedicosResolver {
   }
 
   @Query(() => [Medico], { name: 'medicos' })
-  findAll() {
-    return this.medicosService.findAll();
+  findAll(@Args('findMedico',{nullable:true}) findMedicoQuery:FindMedicoQuery={}) {
+    return this.medicosService.findAll(findMedicoQuery);
   }
 
   @Query(() => Medico, { name: 'medico' })
