@@ -1,4 +1,5 @@
 1: npm i -g @nestjs/cli //cliente nest 
+    nest new practica_graphql
 2: npm i @nestjs/graphql @nestjs/apollo @apollo/server graphql //graphql
 3: nest g mo holaMundo   //generar modulo
 4: nest g r holaMundo  //generar resolver
